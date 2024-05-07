@@ -26,6 +26,8 @@ public class AudioHooks {
         return false;
     }
 
+
+
     /**
      * Ticks the Aether's music manager.
      * @see com.aetherteam.aether.client.event.listeners.AudioListener#onClientTick(TickEvent.ClientTickEvent)

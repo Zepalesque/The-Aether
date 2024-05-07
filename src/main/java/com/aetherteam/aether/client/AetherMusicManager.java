@@ -3,6 +3,7 @@ package com.aetherteam.aether.client;
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.api.AetherMenus;
+import com.aetherteam.aether.client.event.AetherClientEventDispatch;
 import com.aetherteam.cumulus.api.Menus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.WinScreen;
@@ -38,7 +39,7 @@ public class AetherMusicManager {
      * Modified to have a {@link Music} null check.
      */
     public static void tick() {
-        Music music = getSituationalMusic();
+        Music music = AetherClientEventDispatch.selectMusic(minecraft.getSituationalMusic());
         if (music != null) {
             if (currentMusic != null) {
                 if (!music.getEvent().get().getLocation().equals(currentMusic.getLocation()) && music.replaceCurrentMusic()) {
