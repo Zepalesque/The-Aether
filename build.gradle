@@ -59,6 +59,10 @@ dependencies {
 
     implementation "top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.mc_version}"
 
+    implementation "software.bernie.geckolib:geckolib-neoforge-${project.mc_version}:${project.geckolib_version}"
+
+    implementation("com.eliotlash.mclib:mclib:20")
+
     compileOnly "top.theillusivec4.caelus:caelus-forge:${project.caelus_version}"
 
 //    runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
@@ -68,6 +72,7 @@ dependencies {
         jarJar.pin(it, "${project.nitrogen_version}")
     }
 
+
     jarJar("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}") {
         jarJar.ranged(it, "[${project.cumulus_version},)")
         jarJar.pin(it, "${project.cumulus_version}")
@@ -76,6 +81,11 @@ dependencies {
     jarJar("top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.mc_version}") {
         jarJar.ranged(it, "[${project.curios_version},)")
         jarJar.pin(it, "${project.curios_version}+${project.mc_version}")
+    }
+
+    jarJar("software.bernie.geckolib:geckolib-neoforge-${project.mc_version}:${project.geckolib_version}") {
+        jarJar.ranged(it, "[${project.geckolib_version},)")
+        jarJar.pin(it, "${project.geckolib_version}")
     }
 
     compileOnly("mezz.jei:jei-${mc_version}-common-api:${project.jei_version}")
@@ -118,6 +128,14 @@ repositories {
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.architectury.dev/" }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroupByRegex("software\\.bernie.*")
+            includeGroup("com.eliotlash.mclib")
+        }
+    }
     //mavenLocal()
 }
 
