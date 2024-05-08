@@ -49,9 +49,6 @@ public class AetherClient {
         AetherMenus.MENUS.register(bus);
 
         AetherClient.eventSetup(bus);
-
-        MolangParser.INSTANCE.register(new LazyVariable(LIMB_SWING, 0));
-        MolangParser.INSTANCE.register(new LazyVariable(LIMB_SWING_AMOUNT, 0));
     }
 
     public static void clientSetup(FMLClientSetupEvent event) {
@@ -66,6 +63,8 @@ public class AetherClient {
         });
         registerLoreOverrides();
         autoApplyPacks();
+        MolangParser.INSTANCE.register(new LazyVariable(LIMB_SWING, 0));
+        MolangParser.INSTANCE.register(new LazyVariable(LIMB_SWING_AMOUNT, 0));
     }
 
     /**
