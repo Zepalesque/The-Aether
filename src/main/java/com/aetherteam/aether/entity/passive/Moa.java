@@ -59,8 +59,13 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
@@ -81,7 +86,7 @@ public class Moa extends MountableAnimal implements WingedBird, GeoEntity {
     private static final EntityDataAccessor<Boolean> DATA_SITTING_ID = SynchedEntityData.defineId(Moa.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Optional<UUID>> DATA_FOLLOWING_ID = SynchedEntityData.defineId(Moa.class, EntityDataSerializers.OPTIONAL_UUID);
 
-    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private float wingRotation;
     private float prevWingRotation;
@@ -964,13 +969,52 @@ public class Moa extends MountableAnimal implements WingedBird, GeoEntity {
         }
     }
 
+
+    // Geckolib Animations
+
+    private static final String WINGS_FLAP = "animation.moa.wings.flap";
+    private static final String WINGS_IDLE = "animation.moa.wings.idle";
+
+    private static final String BASE_SIT = "animation.moa.base.sit";
+    private static final String BASE_STAND = "animation.moa.base.stand";
+
+    private static final String HEAD_ROTATE = "animation.moa.head.rotate";
+
+    private static final String LEGS_WALK = "animation.moa.legs.walk";
+    private static final String LEGS_FLY = "animation.moa.legs.fly";
+
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "legs", 5, this::legAnim));
+        controllers.add(new AnimationController<>(this, "wings", 5, this::wingAnim));
+        controllers.add(new AnimationController<>(this, "sit", 3, this::sitAnim));
+        controllers.add(new AnimationController<>(this, "head", 0, this::headRot));
 
     }
 
+    private PlayState legAnim(AnimationState<Moa> state) {
+        state.getController().setAnimation(RawAnimation.begin().thenLoop(this.isEntityOnGround() ? LEGS_WALK : LEGS_FLY));
+        return PlayState.CONTINUE;
+    }
+
+    private PlayState wingAnim(AnimationState<Moa> state) {
+        state.getController().setAnimation(RawAnimation.begin().thenLoop(this.isEntityOnGround() ? WINGS_IDLE : WINGS_FLAP));
+        return PlayState.CONTINUE;
+    }
+
+    private PlayState sitAnim(AnimationState<Moa> state) {
+        state.getController().setAnimation(RawAnimation.begin().thenLoop(this.isSitting() ? BASE_SIT : BASE_STAND));
+        return PlayState.CONTINUE;
+    }
+
+    private PlayState headRot(AnimationState<Moa> state) {
+        state.getController().setAnimation(RawAnimation.begin().thenLoop(HEAD_ROTATE));
+        return PlayState.CONTINUE;
+    }
+    
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return geoCache;
+        return cache;
     }
 }

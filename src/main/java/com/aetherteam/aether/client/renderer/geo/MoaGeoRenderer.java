@@ -3,9 +3,12 @@ package com.aetherteam.aether.client.renderer.geo;
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.renderer.entity.MoaRenderer;
 import com.aetherteam.aether.entity.passive.Moa;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
+import software.bernie.geckolib.core.molang.MolangParser;
+import software.bernie.geckolib.core.molang.MolangQueries;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
@@ -49,5 +52,17 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
             return ANIM_LOCATION;
         }
 
+        public static final String LIMB_SWING = "query.limb_swing";
+        public static final String LIMB_SWING_AMOUNT = "query.limb_swing_amount";
+
+        @Override
+        public void applyMolangQueries(Moa animatable, double animTime) {
+            super.applyMolangQueries(animatable, animTime);
+            MolangParser molangParser = MolangParser.INSTANCE;
+
+            molangParser.setMemoizedValue(LIMB_SWING, animatable.walkAnimation::position);
+            molangParser.setMemoizedValue(LIMB_SWING_AMOUNT, () -> animatable.walkAnimation.speed(Minecraft.getInstance().getPartialTick()));
+
+        }
     }
 }

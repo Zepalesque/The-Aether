@@ -73,7 +73,7 @@ public class AetherRenderers {
         event.registerEntityRenderer(AetherEntityTypes.AERBUNNY.get(), AerbunnyRenderer::new);
 
         event.registerEntityRenderer(AetherEntityTypes.MOA.get(), MoaGeoRenderer::new);
-        
+
         event.registerEntityRenderer(AetherEntityTypes.AERWHALE.get(), AerwhaleRenderer::new);
 
         event.registerEntityRenderer(AetherEntityTypes.BLUE_SWET.get(), BlueSwetRenderer::new);
