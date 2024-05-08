@@ -1,6 +1,7 @@
 package com.aetherteam.aether.client.renderer.geo;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.client.AetherClient;
 import com.aetherteam.aether.client.renderer.entity.MoaRenderer;
 import com.aetherteam.aether.entity.passive.Moa;
 import net.minecraft.client.Minecraft;
@@ -58,8 +59,8 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
             super.applyMolangQueries(animatable, animTime);
             MolangParser molangParser = MolangParser.INSTANCE;
 
-            molangParser.setMemoizedValue(LIMB_SWING, animatable.walkAnimation::position);
-            molangParser.setMemoizedValue(LIMB_SWING_AMOUNT, () -> animatable.walkAnimation.speed(Minecraft.getInstance().getPartialTick()));
+            molangParser.setMemoizedValue(AetherClient.LIMB_SWING, animatable.walkAnimation::position);
+            molangParser.setMemoizedValue(AetherClient.LIMB_SWING_AMOUNT, () -> animatable.walkAnimation.speed(Minecraft.getInstance().getPartialTick()));
 
         }
     }
