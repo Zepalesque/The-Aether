@@ -104,6 +104,8 @@ public class AetherConfig
         public final ConfigValue<Boolean> enable_aether_menu_button;
         public final ConfigValue<Boolean> enable_trivia;
 
+        public final ConfigValue<Boolean> inverted_moa_anims;
+
         public final ConfigValue<Boolean> disable_menu_music;
 
         public final ConfigValue<Boolean> install_resource_packs;
@@ -116,6 +118,11 @@ public class AetherConfig
             disable_aether_skybox = builder
                     .comment("Disables the Aether's custom skybox in case you have a shader that is incompatible with custom skyboxes")
                     .define("Disables Aether custom skybox", false);
+            builder.pop();
+
+            inverted_moa_anims = builder
+                    .comment("Inverts moa fly/walk anims")
+                    .define("Inverted Moa Anims", false);
             builder.pop();
 
             builder.push("Gui");

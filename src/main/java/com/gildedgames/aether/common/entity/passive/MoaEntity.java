@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import com.gildedgames.aether.client.registry.AetherSoundEvents;
 import com.gildedgames.aether.common.entity.ai.FallingRandomWalkingGoal;
 import com.gildedgames.aether.common.entity.ai.navigator.FallPathNavigator;
+import com.gildedgames.aether.common.entity.miscellaneous.WingedBird;
 import com.gildedgames.aether.common.registry.AetherEntityTypes;
 
 import com.gildedgames.aether.common.registry.AetherItems;
@@ -34,7 +35,7 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Optional;
 import java.util.UUID;
 
-public class MoaEntity extends MountableEntity
+public class MoaEntity extends MountableEntity implements WingedBird
 {
 	public static final DataParameter<String> DATA_MOA_TYPE_ID = EntityDataManager.defineId(MoaEntity.class, DataSerializers.STRING);
 	public static final DataParameter<Optional<UUID>> DATA_RIDER_UUID = EntityDataManager.defineId(MoaEntity.class, DataSerializers.OPTIONAL_UUID);
@@ -44,6 +45,7 @@ public class MoaEntity extends MountableEntity
 	public static final DataParameter<Integer> DATA_AMOUNT_FED_ID = EntityDataManager.defineId(MoaEntity.class, DataSerializers.INT);
 	public static final DataParameter<Boolean> DATA_PLAYER_GROWN_ID = EntityDataManager.defineId(MoaEntity.class, DataSerializers.BOOLEAN);
 	public static final DataParameter<Boolean> DATA_SITTING_ID = EntityDataManager.defineId(MoaEntity.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> DATA_ENTITY_ON_GROUND_ID = EntityDataManager.defineId(MoaEntity.class, DataSerializers.BOOLEAN);
 
 	public float wingRotation;
 	public float prevWingRotation;
@@ -273,7 +275,91 @@ public class MoaEntity extends MountableEntity
 		compound.putBoolean("PlayerGrown", this.isPlayerGrown());
 		compound.putBoolean("Sitting", this.isSitting());
 	}
+	@Override
+	public boolean isEntityOnGround() {
+		return this.getEntityData().get(DATA_ENTITY_ON_GROUND_ID);
+	}
 
+	/**
+	 * Sets whether this entity is on the ground.
+	 *
+	 * @param onGround The {@link Boolean} value.
+	 */
+	@Override
+	public void setEntityOnGround(boolean onGround) {
+		this.getEntityData().set(DATA_ENTITY_ON_GROUND_ID, onGround);
+	}
+	/**
+	 * @return The {@link Float} value for the wing rotation; used for animation.
+	 */
+	@Override
+	public float getWingRotation() {
+		return this.wingRotation;
+	}
+
+	/**
+	 * Sets the wing rotation for animation.
+	 *
+	 * @param rotation The {@link Float} value.
+	 */
+	@Override
+	public void setWingRotation(float rotation) {
+		this.wingRotation = rotation;
+	}
+
+	/**
+	 * @return The previous {@link Float} value for the wing rotation; used for animation.
+	 */
+	@Override
+	public float getPrevWingRotation() {
+		return this.prevWingRotation;
+	}
+
+	/**
+	 * Sets the previous wing rotation for animation.
+	 *
+	 * @param rotation The {@link Float} value.
+	 */
+	@Override
+	public void setPrevWingRotation(float rotation) {
+		this.prevWingRotation = rotation;
+	}
+
+	/**
+	 * @return The {@link Float} value for the amplitude of how far the wings should rotate during animation.
+	 */
+	@Override
+	public float getWingDestPos() {
+		return this.destPos;
+	}
+
+	/**
+	 * Sets the amplitude of how far the wings should rotate during animation.
+	 *
+	 * @param pos The {@link Float} value.
+	 */
+	@Override
+	public void setWingDestPos(float pos) {
+		this.destPos = pos;
+	}
+
+	/**
+	 * @return The previous {@link Float} value for the amplitude of how far the wings should rotate during animation.
+	 */
+	@Override
+	public float getPrevWingDestPos() {
+		return this.prevDestPos;
+	}
+
+	/**
+	 * Sets the previous amplitude of how far the wings should rotate during animation.
+	 *
+	 * @param pos The {@link Float} value.
+	 */
+	@Override
+	public void setPrevWingDestPos(float pos) {
+		this.prevDestPos = pos;
+	}
 
 
 
