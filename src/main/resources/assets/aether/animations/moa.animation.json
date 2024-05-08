@@ -1,0 +1,196 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.moa.wings.idle": {
+			"loop": true,
+			"bones": {
+				"left_wing": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.moa.wings.flap": {
+			"loop": true,
+			"animation_length": 0.5,
+			"bones": {
+				"left_wing": {
+					"rotation": {
+						"0.0": {
+							"vector": [-90, 0, 0]
+						},
+						"0.25": {
+							"vector": [-90, 0, -110],
+							"easing": "easeInOutSine"
+						},
+						"0.5": {
+							"vector": [-90, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 2, 6]
+						},
+						"0.25": {
+							"vector": [0, 2, 6]
+						},
+						"0.5": {
+							"vector": [0, 2, 6]
+						}
+					}
+				},
+				"right_wing": {
+					"rotation": {
+						"0.0": {
+							"vector": [-90, 0, 0]
+						},
+						"0.25": {
+							"vector": [-90, 0, 110],
+							"easing": "easeInOutSine"
+						},
+						"0.5": {
+							"vector": [-90, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 2, 6]
+						},
+						"0.25": {
+							"vector": [0, 2, 6]
+						},
+						"0.5": {
+							"vector": [0, 2, 6]
+						}
+					}
+				}
+			}
+		},
+		"animation.moa.legs.fly": {
+			"loop": true,
+			"bones": {
+				"left_leg": {
+					"rotation": {
+						"vector": [35, 0, 0]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"vector": [35, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.moa.legs.walk": {
+			"animation_length": 6.5,
+			"bones": {
+				"left_leg": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": {
+						"vector": ["(math.cos(query.limb_swing * 0.6662) * 1.4 * query.limb_swing_amount)*-24.9877200798", 0, 0]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"vector": ["-(math.cos(query.limb_swing * 0.6662) * 1.4 * query.limb_swing_amount)*-24.9877200798", 0, 0]
+					}
+				}
+			}
+		},
+		"animation.moa.head.rotate": {
+			"loop": true,
+			"bones": {
+				"neck": {
+					"rotation": {
+						"vector": [0, "query.head_y_rotation", 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": ["query.head_x_rotation", 0, 0]
+					}
+				}
+			}
+		},
+		"animation.moa.base.sit": {
+			"loop": true,
+			"bones": {
+				"left_leg": {
+					"rotation": {
+						"vector": [90, 0, 0],
+						"easing": "easeInOutSine"
+					},
+					"position": {
+						"vector": [-1, 2.5, -4],
+						"easing": "easeInOutSine"
+					},
+					"scale": {
+						"vector": [1, 0.6, 1],
+						"easing": "easeInOutSine"
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"vector": [90, 0, 0],
+						"easing": "easeInOutSine"
+					},
+					"position": {
+						"vector": [1, 2.5, -4],
+						"easing": "easeInOutSine"
+					},
+					"scale": {
+						"vector": [1, 0.6, 1],
+						"easing": "easeInOutSine"
+					}
+				},
+				"base": {
+					"position": {
+						"vector": [0, -16, 0],
+						"easing": "easeInOutSine"
+					}
+				}
+			}
+		},
+		"animation.moa.base.stand": {
+			"loop": true,
+			"bones": {
+				"left_leg": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"base": {
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
