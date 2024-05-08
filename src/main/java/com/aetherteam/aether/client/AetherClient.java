@@ -29,9 +29,17 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.client.event.RegisterEntitySpectatorShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import software.bernie.geckolib.core.molang.LazyVariable;
+import software.bernie.geckolib.core.molang.MolangParser;
+import software.bernie.geckolib.core.molang.MolangQueries;
 
 public class AetherClient {
     private static boolean refreshPacks = false;
+
+    // GeckoLib Molang variables
+    public static final String LIMB_SWING = "query.limb_swing";
+    public static final String LIMB_SWING_AMOUNT = "query.limb_swing_amount";
+
 
     public static void clientInit(IEventBus bus) {
         bus.addListener(AetherClient::clientSetup);
@@ -41,6 +49,9 @@ public class AetherClient {
         AetherMenus.MENUS.register(bus);
 
         AetherClient.eventSetup(bus);
+
+        MolangParser.INSTANCE.register(new LazyVariable(LIMB_SWING, 0));
+        MolangParser.INSTANCE.register(new LazyVariable(LIMB_SWING_AMOUNT, 0));
     }
 
     public static void clientSetup(FMLClientSetupEvent event) {

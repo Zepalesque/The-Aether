@@ -1012,7 +1012,7 @@ public class Moa extends MountableAnimal implements WingedBird, GeoEntity {
         state.getController().setAnimation(RawAnimation.begin().thenLoop(HEAD_ROTATE));
         return PlayState.CONTINUE;
     }
-    
+
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
