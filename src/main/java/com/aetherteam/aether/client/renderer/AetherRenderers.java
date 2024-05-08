@@ -19,6 +19,7 @@ import com.aetherteam.aether.client.renderer.blockentity.SkyrootBedRenderer;
 import com.aetherteam.aether.client.renderer.blockentity.TreasureChestRenderer;
 import com.aetherteam.aether.client.renderer.entity.*;
 import com.aetherteam.aether.client.renderer.entity.model.*;
+import com.aetherteam.aether.client.renderer.geo.MoaGeoRenderer;
 import com.aetherteam.aether.client.renderer.player.layer.DartLayer;
 import com.aetherteam.aether.client.renderer.player.layer.DeveloperGlowLayer;
 import com.aetherteam.aether.client.renderer.player.layer.PlayerHaloLayer;
@@ -70,7 +71,9 @@ public class AetherRenderers {
         event.registerEntityRenderer(AetherEntityTypes.FLYING_COW.get(), FlyingCowRenderer::new);
         event.registerEntityRenderer(AetherEntityTypes.SHEEPUFF.get(), SheepuffRenderer::new);
         event.registerEntityRenderer(AetherEntityTypes.AERBUNNY.get(), AerbunnyRenderer::new);
-        event.registerEntityRenderer(AetherEntityTypes.MOA.get(), MoaRenderer::new);
+
+        event.registerEntityRenderer(AetherEntityTypes.MOA.get(), MoaGeoRenderer::new);
+        
         event.registerEntityRenderer(AetherEntityTypes.AERWHALE.get(), AerwhaleRenderer::new);
 
         event.registerEntityRenderer(AetherEntityTypes.BLUE_SWET.get(), BlueSwetRenderer::new);

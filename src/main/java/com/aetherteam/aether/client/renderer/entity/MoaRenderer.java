@@ -85,6 +85,22 @@ public class MoaRenderer extends MobRenderer<Moa, MoaModel> {
         return moaType == null ? DEFAULT_TEXTURE : moaType.moaTexture();
     }
 
+    public static ResourceLocation location(Moa moa) {
+        ResourceLocation moaSkin = getMoaSkinLocation(moa);
+        if (moaSkin != null) {
+            return moaSkin;
+        }
+        if (moa.hasCustomName() && moa.getName().getString().equals("Mos")) {
+            return MOS_TEXTURE;
+        }
+        if ((moa.hasCustomName() && moa.getName().getString().equals("Raptor__") && moa.getMoaTypeKey() == AetherMoaTypes.BLUE)
+            || (moa.getRider() != null && moa.getRider().equals(UUID.fromString("c3e6871e-8e60-490a-8a8d-2bbe35ad1604")))) { // Raptor__
+            return RAPTOR_TEXTURE;
+        }
+        MoaType moaType = moa.getMoaType();
+        return moaType == null ? DEFAULT_TEXTURE : moaType.moaTexture();
+    }
+
     /**
      * Retrieves the texture for the player's {@link com.aetherteam.aether.perk.types.MoaSkins.MoaSkin}, if there is one and the player has a Moa Skin.
      *
@@ -92,7 +108,7 @@ public class MoaRenderer extends MobRenderer<Moa, MoaModel> {
      * @return The {@link ResourceLocation} for the emissive texture.
      */
     @Nullable
-    private ResourceLocation getMoaSkinLocation(Moa moa) {
+    private static ResourceLocation getMoaSkinLocation(Moa moa) {
         UUID lastRiderUUID = moa.getLastRider();
         UUID moaUUID = moa.getMoaUUID();
         Map<UUID, MoaData> userSkinsData = ClientMoaSkinPerkData.INSTANCE.getClientPerkData();
