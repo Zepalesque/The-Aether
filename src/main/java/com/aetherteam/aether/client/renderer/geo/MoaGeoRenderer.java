@@ -59,7 +59,7 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
             super.applyMolangQueries(animatable, animTime);
             MolangParser molangParser = MolangParser.INSTANCE;
 
-            molangParser.setMemoizedValue(AetherClient.LIMB_SWING, animatable.walkAnimation::position);
+            molangParser.setMemoizedValue(AetherClient.LIMB_SWING, () -> animatable.walkAnimation.position(Minecraft.getInstance().getPartialTick()));
             molangParser.setMemoizedValue(AetherClient.LIMB_SWING_AMOUNT, () -> animatable.walkAnimation.speed(Minecraft.getInstance().getPartialTick()));
 
         }

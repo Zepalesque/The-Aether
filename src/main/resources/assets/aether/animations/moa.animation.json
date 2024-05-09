@@ -94,7 +94,7 @@
 				},
 				"right_leg": {
 					"rotation": {
-						"vector": ["-(math.cos(query.limb_swing * 0.6662) * 1.4 * query.limb_swing_amount)*-24.9877200798", 0, 0]
+						"vector": ["(math.cos(query.limb_swing * 0.6662) * 1.4 * query.limb_swing_amount)*24.9877200798", 0, 0]
 					}
 				},
 				"base": {
@@ -185,7 +185,7 @@
 				},
 				"base": {
 					"position": {
-						"vector": ["easeInOutSine", "easeInOutSine", "easeInOutSine"]
+						"vector": [0, -16, 0]
 					}
 				}
 			}
