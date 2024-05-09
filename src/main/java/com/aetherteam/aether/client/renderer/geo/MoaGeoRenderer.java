@@ -47,7 +47,7 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
         public ResourceLocation getAnimationResource(Moa moa) {
             return ANIM_LOCATION;
         }
-        
+
         @Override
         public void applyMolangQueries(Moa animatable, double animTime) {
             super.applyMolangQueries(animatable, animTime);
