@@ -975,26 +975,24 @@ public class Moa extends MountableAnimal implements WingedBird, GeoEntity {
     private static final String WINGS_FLAP = "animation.moa.wings.flap";
     private static final String WINGS_IDLE = "animation.moa.wings.idle";
 
-    private static final String BASE_SIT = "animation.moa.base.sit";
-    private static final String BASE_STAND = "animation.moa.base.stand";
 
     private static final String HEAD_ROTATE = "animation.moa.head.rotate";
 
     private static final String LEGS_WALK = "animation.moa.legs.walk";
     private static final String LEGS_FLY = "animation.moa.legs.fly";
+    private static final String LEGS_SIT = "animation.moa.legs.sit";
 
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "legs", 5, this::legAnim));
-        controllers.add(new AnimationController<>(this, "wings", 5, this::wingAnim));
-        controllers.add(new AnimationController<>(this, "sit", 3, this::sitAnim));
+        controllers.add(new AnimationController<>(this, "legs", 0, this::legAnim));
+        controllers.add(new AnimationController<>(this, "wings", 0, this::wingAnim));
         controllers.add(new AnimationController<>(this, "head", 0, this::headRot));
 
     }
 
     private PlayState legAnim(AnimationState<Moa> state) {
-        state.getController().setAnimation(RawAnimation.begin().thenLoop(this.isEntityOnGround() ? LEGS_WALK : LEGS_FLY));
+        state.getController().setAnimation(RawAnimation.begin().thenLoop(this.isEntityOnGround() ? this.isSitting() ? LEGS_SIT : LEGS_WALK : LEGS_FLY));
         return PlayState.CONTINUE;
     }
 
@@ -1003,10 +1001,6 @@ public class Moa extends MountableAnimal implements WingedBird, GeoEntity {
         return PlayState.CONTINUE;
     }
 
-    private PlayState sitAnim(AnimationState<Moa> state) {
-        state.getController().setAnimation(RawAnimation.begin().thenLoop(this.isSitting() ? BASE_SIT : BASE_STAND));
-        return PlayState.CONTINUE;
-    }
 
     private PlayState headRot(AnimationState<Moa> state) {
         state.getController().setAnimation(RawAnimation.begin().thenLoop(HEAD_ROTATE));
