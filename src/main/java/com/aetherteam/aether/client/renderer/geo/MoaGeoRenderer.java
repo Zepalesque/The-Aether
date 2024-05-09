@@ -23,16 +23,8 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
         return MoaRenderer.location(moa);
     }
 
-
-    @Override
-    public float getMotionAnimThreshold(Moa animatable) {
-        return 0.001F;
-    }
-
-
     public static class Model extends GeoModel<Moa> {
 
-        // TODO: Easter egg like paradise lost maybe lol
         private static final ResourceLocation FALLBACK = new ResourceLocation(Aether.MODID, "textures/entity/mobs/moa/blue_moa.png");
         private static final ResourceLocation GEO_LOCATION = new ResourceLocation(Aether.MODID, "geo/moa.geo.json");
         private static final ResourceLocation ANIM_LOCATION = new ResourceLocation(Aether.MODID, "animations/moa.animation.json");
