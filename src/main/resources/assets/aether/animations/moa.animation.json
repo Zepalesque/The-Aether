@@ -89,12 +89,12 @@
 			"bones": {
 				"left_leg": {
 					"rotation": {
-						"vector": ["(math.cos(query.limb_swing * 0.6662) * 1.4 * query.limb_swing_amount)*-24.9877200798", 0, 0]
+						"vector": ["(math.cos(query.limb_swing * 0.6662 * 57.2957795131) * 1.4 * query.limb_swing_amount)*-24.9877200798", 0, 0]
 					}
 				},
 				"right_leg": {
 					"rotation": {
-						"vector": ["(math.cos(query.limb_swing * 0.6662) * 1.4 * query.limb_swing_amount)*24.9877200798", 0, 0]
+						"vector": ["(math.cos(query.limb_swing * 0.6662 * 57.2957795131) * 1.4 * query.limb_swing_amount)*24.9877200798", 0, 0]
 					}
 				},
 				"base": {
