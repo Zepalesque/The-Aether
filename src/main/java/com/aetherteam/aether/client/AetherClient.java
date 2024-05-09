@@ -41,6 +41,9 @@ public class AetherClient {
     public static final String LIMB_SWING = "query.limb_swing";
     public static final String LIMB_SWING_AMOUNT = "query.limb_swing_amount";
 
+    public static final String HEAD_X_ROT = "query.head_x_rotation";
+    public static final String HEAD_Y_ROT = "query.head_y_rotation";
+
 
     public static void clientInit(IEventBus bus) {
         bus.addListener(AetherClient::clientSetup);
@@ -53,6 +56,8 @@ public class AetherClient {
 
         MolangParser.INSTANCE.register(new Variable(LIMB_SWING, 0));
         MolangParser.INSTANCE.register(new Variable(LIMB_SWING_AMOUNT, 0));
+        MolangParser.INSTANCE.register(new Variable(HEAD_X_ROT, 0));
+        MolangParser.INSTANCE.register(new Variable(HEAD_Y_ROT, 0));
     }
 
     public static void clientSetup(FMLClientSetupEvent event) {

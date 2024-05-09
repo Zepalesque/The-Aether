@@ -6,18 +6,18 @@
 			"bones": {
 				"left_wing": {
 					"rotation": {
-						"vector": [90, 0, 0]
+						"vector": [0, 0, 0]
 					},
 					"position": {
-						"vector": [0, 6, -2]
+						"vector": [0, 0, 0]
 					}
 				},
 				"right_wing": {
 					"rotation": {
-						"vector": [90, 0, 0]
+						"vector": [0, 0, 0]
 					},
 					"position": {
-						"vector": [0, 6, -2]
+						"vector": [0, 0, 0]
 					}
 				}
 			}
@@ -29,37 +29,37 @@
 				"left_wing": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [-90, 0, 0]
 						},
 						"0.25": {
-							"vector": [0, -110, 0],
+							"vector": [-90, -110, 0],
 							"easing": "easeInOutSine"
 						},
 						"0.5": {
-							"vector": [0, 0, 0],
+							"vector": [-90, 0, 0],
 							"easing": "easeInOutSine"
 						}
 					},
 					"position": {
-						"vector": [0, 0, 0]
+						"vector": [0, -6, 2]
 					}
 				},
 				"right_wing": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [-90, 0, 0]
 						},
 						"0.25": {
-							"vector": [0, 110, 0],
+							"vector": [-90, 110, 0],
 							"easing": "easeInOutSine"
 						},
 						"0.5": {
-							"vector": [0, 0, 0],
+							"vector": [-90, 0, 0],
 							"easing": "easeInOutSine"
 						}
 					},
 					"position": {
-						"vector": [0, 0, 0]
+						"vector": [0, -6, 2]
 					}
 				}
 			}
