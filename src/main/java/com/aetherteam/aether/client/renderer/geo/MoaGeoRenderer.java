@@ -55,7 +55,7 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
             Minecraft mc = Minecraft.getInstance();
 
 
-            molangParser.setMemoizedValue(AetherClient.LIMB_SWING, () -> animatable.walkAnimation.position(mc.getPartialTick()));
+            molangParser.setMemoizedValue(AetherClient.LIMB_SWING, () -> animatable.walkAnimation.position(mc.getPartialTick()) * Mth.RAD_TO_DEG);
             molangParser.setMemoizedValue(AetherClient.LIMB_SWING_AMOUNT, () -> animatable.walkAnimation.speed(mc.getPartialTick()));
 
             molangParser.setMemoizedValue(AetherClient.HEAD_X_ROT, () -> Mth.lerp(mc.getPartialTick(), animatable.xRotO, animatable.getXRot()));
