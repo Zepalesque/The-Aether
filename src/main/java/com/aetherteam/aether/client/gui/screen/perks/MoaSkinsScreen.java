@@ -417,8 +417,11 @@ public class MoaSkinsScreen extends Screen {
         float yRot = livingEntity.getYRot();
         float xRot = livingEntity.getXRot();
         livingEntity.setYBodyRot(180.0F + angleXComponent);
+        livingEntity.yBodyRotO = 180.0F + angleXComponent;
         livingEntity.setYRot(180.0F + angleXComponent);
+        livingEntity.yRotO = 180.0F + angleXComponent;
         livingEntity.setXRot(-angleYComponent);
+        livingEntity.xRotO = -angleYComponent;
         livingEntity.setYHeadRot(livingEntity.getYRot());
         livingEntity.yHeadRotO = livingEntity.getYRot();
         Vector3f vector3f = new Vector3f(0.0F, livingEntity.getBbHeight() / 2.0F + yOffset, 0.0F);
