@@ -3,24 +3,20 @@ package com.aetherteam.aether.client.renderer.geo;
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.AetherClient;
 import com.aetherteam.aether.client.renderer.entity.MoaRenderer;
+import com.aetherteam.aether.client.renderer.geo.layers.MoaEmissiveGeoLayer;
 import com.aetherteam.aether.entity.passive.Moa;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.molang.MolangParser;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
     public MoaGeoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new Model());
+        addRenderLayer(new MoaEmissiveGeoLayer(this));
     }
 
     @Override
@@ -50,8 +46,6 @@ public class MoaGeoRenderer extends GeoEntityRenderer<Moa> {
         public ResourceLocation getAnimationResource(Moa moa) {
             return ANIM_LOCATION;
         }
-
-
 
         @Override
         public void applyMolangQueries(Moa animatable, double animTime) {
